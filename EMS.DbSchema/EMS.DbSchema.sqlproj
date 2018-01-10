@@ -118,7 +118,6 @@
     <Build Include="dbo\Stored Procedures\uspGetAgencyList.sql" />
     <Build Include="dbo\Stored Procedures\uspGetMonthlyCallStats.sql" />
     <Build Include="dbo\Stored Procedures\uspGetHourByHourActivityGeneral.sql" />
-    <Build Include="dbo\Stored Procedures\uspSaveAgencyTable.sql" />
     <Build Include="dbo\Stored Procedures\uspGetHourByHourActivityAll.sql" />
     <Build Include="dbo\Stored Procedures\uspGetHourByHourActivityDuty.sql" />
     <Build Include="dbo\Stored Procedures\uspSaveAgency.sql" />
