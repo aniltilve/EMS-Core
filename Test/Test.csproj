@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\EMS.Business.csproj" />
+    <ProjectReference Include="..\DataLayer\EMS.DataAccess.csproj" />
+    <ProjectReference Include="..\Entities\EMS.Entity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="BusinessLayer">
+      <HintPath>..\BusinessLayer\bin\Debug\netcoreapp2.0\BusinessLayer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

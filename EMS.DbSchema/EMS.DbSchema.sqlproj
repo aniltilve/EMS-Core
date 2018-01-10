@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>EMS.DbSchema</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{5c9a7e04-0250-4167-80e5-c993facffb9c}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>EMS.DbSchema</RootNamespace>
+    <AssemblyName>EMS.DbSchema</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="emsuser\" />
+    <Folder Include="emsuser\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\tblTBVACLog.sql" />
+    <Build Include="dbo\Tables\tblAgencyPaymentHist.sql" />
+    <Build Include="dbo\Tables\tblCommonMaster.sql" />
+    <Build Include="emsuser\Tables\tblXrefCrewTBVAC_08232014.sql" />
+    <Build Include="dbo\Tables\tblTBVACSeq.sql" />
+    <Build Include="dbo\Tables\tblUSStates.sql" />
+    <Build Include="dbo\Tables\tblAddress.sql" />
+    <Build Include="dbo\Tables\tblXREFReportsAgency.sql" />
+    <Build Include="dbo\Tables\tblAgency.sql" />
+    <Build Include="dbo\Tables\tblCrewType.sql" />
+    <Build Include="dbo\Tables\tblConfiguration.sql" />
+    <Build Include="dbo\Tables\tblErrorLog.sql" />
+    <Build Include="dbo\Tables\tblCPRType.sql" />
+    <Build Include="dbo\Tables\tblContact.sql" />
+    <Build Include="dbo\Tables\tblHospital.sql" />
+    <Build Include="dbo\Tables\tblCrew.sql" />
+    <Build Include="dbo\Tables\tblALSType.sql" />
+    <Build Include="dbo\Tables\tblDispatchType.sql" />
+    <Build Include="dbo\Tables\tblRig.sql" />
+    <Build Include="dbo\Tables\tblTowns.sql" />
+    <Build Include="dbo\Tables\tblReportsMenu.sql" />
+    <Build Include="dbo\Tables\tblCallType.sql" />
+    <Build Include="dbo\Tables\tblXrefCrewTBVAC.sql" />
+    <Build Include="Security\ems.sql" />
+    <Build Include="Security\emsuser1.sql" />
+    <Build Include="Security\emsuser.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetExtraFootballList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetHospitalList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetContactList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetCrewTypeList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetRigList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetALSTypeList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetAgencyPaymentHistList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetCPRTypeList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetErrorLogList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetTBVACLogList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetCallTypeList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetXREFReportsAgencyList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetDispatchTypeList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetAgencyStats.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetMonthlyStatisticalAnalysisSummary.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetErrorLog.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetMonthlyCallStatsByTown.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetExceptionStats.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetAddressList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetCrewList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetTownList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetAgencyList.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetMonthlyCallStats.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetHourByHourActivityGeneral.sql" />
+    <Build Include="dbo\Stored Procedures\uspSaveAgencyTable.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetHourByHourActivityAll.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetHourByHourActivityDuty.sql" />
+    <Build Include="dbo\Stored Procedures\uspSaveAgency.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetYearlyActivityAll.sql" />
+    <Build Include="dbo\Stored Procedures\uspSaveCrew.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetYearlyActivityDuty.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetYearlyActivityGeneral.sql" />
+    <Build Include="dbo\Stored Procedures\uspAuditLog.sql" />
+    <Build Include="Security\emsuser_1.sql" />
+  </ItemGroup>
+</Project>

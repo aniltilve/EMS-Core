@@ -1,0 +1,28 @@
+﻿.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.page-header {
+    font-size: 40px;
+}
+
+.product-description {
+    font-size: 32px;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .page-header {
+        font-size: 28px;
+    }
+    .product-description {
+        font-size: 16px;
+    }
+    .footer {
+        visibility:hidden;
+    }
+}
