@@ -38,7 +38,7 @@ BEGIN
 				@szFullName,
 				@szType,
 				1,
-				getdate(),
+				GETDATE(),
 				@szInsertedBy
 			)
 			SELECT @iCrewID = @@IDENTITY
@@ -54,10 +54,10 @@ BEGIN
 				szFullName = @szFullName,
 				szType = @szType,
 				bIsActive = @bIsActive,
-				dtUpdated = getdate(),
+				dtUpdated = GETDATE(),
 				szUpdatedBy = @szUpdatedBy
 			WHERE
-				iAgencyID = @iAgencyID
+				iCrewID = @iCrewID
 		END
 	END TRY
 	BEGIN CATCH
