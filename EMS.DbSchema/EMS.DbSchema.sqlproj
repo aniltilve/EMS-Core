@@ -128,5 +128,6 @@
     <Build Include="dbo\Stored Procedures\uspGetYearlyActivityGeneral.sql" />
     <Build Include="dbo\Stored Procedures\uspAuditLog.sql" />
     <Build Include="Security\emsuser_1.sql" />
+    <Build Include="dbo\Stored Procedures\uspSaveHospital.sql" />
   </ItemGroup>
 </Project>
