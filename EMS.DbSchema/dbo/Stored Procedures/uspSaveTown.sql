@@ -13,7 +13,7 @@ BEGIN
 		IF (@iTownID IS NULL OR @iTownID <= 0)
 		BEGIN
 			INSERT INTO 
-				dbo.tblTown
+				dbo.tblTowns
 			(
 				iAgencyID,
 				szName,
@@ -33,7 +33,7 @@ BEGIN
 		END
 		ELSE
 		BEGIN
-			UPDATE dbo.tblTown
+			UPDATE dbo.tblTowns
 			SET
 				iAgencyID = @iAgencyID,
 				szName = @szName,
