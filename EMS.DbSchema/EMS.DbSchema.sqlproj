@@ -129,5 +129,6 @@
     <Build Include="Security\emsuser_1.sql" />
     <Build Include="dbo\Stored Procedures\uspSaveHospital.sql" />
     <Build Include="dbo\Stored Procedures\uspSaveTown.sql" />
+    <Build Include="dbo\Stored Procedures\uspSaveCrewType.sql" />
   </ItemGroup>
 </Project>

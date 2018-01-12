@@ -32,7 +32,7 @@ DECLARE @bit INT ,
 @PKCols VARCHAR(1000) ,
 @sql VARCHAR(2000),
 @UpdateDate VARCHAR(21) ,
-@UserName VARCHAR(128) ,
+@Name VARCHAR(128) ,
 @Type CHAR(1) ,
 @PKFieldSelect VARCHAR(1000),
 @PKValueSelect VARCHAR(1000)
@@ -79,12 +79,12 @@ AND c.CONSTRAINT_NAME = pk.CONSTRAINT_NAME
 
 IF (@type = 'U')
 	BEGIN
-		SELECT @UserName = szUpdatedBy FROM #ins
+		SELECT @Name = szUpdatedBy FROM #ins
 		SELECT @UpdateDate = dtUpdated FROM #ins
 	END
 ELSE
 	BEGIN
-		SELECT @UserName = szInsertedBy FROM #ins
+		SELECT @Name = szInsertedBy FROM #ins
 		SELECT @UpdateDate = dtInserted FROM #ins
 	END
 	 
@@ -105,7 +105,7 @@ SELECT @char = ((@field - 1) / 8) + 1
 IF SUBSTRING(COLUMNS_UPDATED(),@char, 1) & @bit > 0 OR @Type IN ('I','U')
 BEGIN
 SELECT @fieldname = COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = @TableName AND ORDINAL_POSITION = @field
-SELECT @sql = 'INSERT EMS_Audit.emsdcrt.tblAudit (TYPE, TableName, PrimaryKeyField, PrimaryKeyValue, FieldName, OldValue, NewValue, UpdateDate, UserName)'
+SELECT @sql = 'INSERT EMS_Audit.emsdcrt.tblAudit (TYPE, TableName, PrimaryKeyField, PrimaryKeyValue, FieldName, OldValue, NewValue, UpdateDate, Name)'
 SELECT @sql = @sql + ' SELECT ''' + @Type + ''''
 SELECT @sql = @sql + ',''' + @TableName + ''''
 SELECT @sql = @sql + ',' + @PKFieldSelect
@@ -114,7 +114,7 @@ SELECT @sql = @sql + ',''' + @fieldname + ''''
 SELECT @sql = @sql + ',CONVERT(VARCHAR(1000),d.' + @fieldname + ')'
 SELECT @sql = @sql + ',CONVERT(VARCHAR(1000),i.' + @fieldname + ')'
 SELECT @sql = @sql + ',''' + @UpdateDate + ''''
-SELECT @sql = @sql + ',''' + @UserName + ''''
+SELECT @sql = @sql + ',''' + @Name + ''''
 SELECT @sql = @sql + ' FROM #ins i FULL OUTER JOIN #del d'
 SELECT @sql = @sql + @PKCols
 SELECT @sql = @sql + ' WHERE i.' + @fieldname + ' <> d.' + @fieldname
