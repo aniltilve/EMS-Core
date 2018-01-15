@@ -10,11 +10,11 @@ namespace EMS.Entity
         [Key]
         public int iTownID { get; set; }
         public int? iAgencyID { get; set; }
-        public String szName { get; set; }
+        public string szName { get; set; }
         public bool bIsActive { get; set; }
         public DateTime dtInserted { get; set; }
-        public String szInsertedBy { get; set; }
+        public string szInsertedBy { get; set; }
         public DateTime? dtUpdated { get; set; }
-        public String szUpdatedBy { get; set; }
+        public string szUpdatedBy { get; set; }
     }
 }

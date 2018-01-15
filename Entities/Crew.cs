@@ -11,14 +11,14 @@ namespace EMS.Entity
         public int iCrewID { get; set; }
         public int? iAgencyID { get; set; }
         public int? iEMTID { get; set; }
-        public String szUserName { get; set; }
-        public String szPassword { get; set; }
-        public String szFullName { get; set; }
-        public String szType { get; set; }
+        public string szUserName { get; set; }
+        public string szPassword { get; set; }
+        public string szFullName { get; set; }
+        public string szType { get; set; }
         public bool? bIsActive { get; set; }
         public DateTime? dtInserted { get; set; }
-        public String szInsertedBy { get; set; }
+        public string szInsertedBy { get; set; }
         public DateTime? dtUpdated { get; set; }
-        public String szUpdatedBy { get; set; }
+        public string szUpdatedBy { get; set; }
     }
 }

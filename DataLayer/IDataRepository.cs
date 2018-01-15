@@ -6,9 +6,9 @@ namespace EMS.DataAccess
 {
     interface IDataRepository<T> where T : class
     {
-        IList<T> GetList(String SQL);
+        IList<T> GetList(string SQL);
         int Add(SqlCommand command);
-        void Update(String SQL);
-        void Delete(String SQL);
+        void Update(string SQL);
+        void Delete(string SQL);
     }
 }

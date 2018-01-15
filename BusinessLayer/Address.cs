@@ -8,7 +8,7 @@ namespace EMS.Business
     {
         public IList<Address> GetAddressList(int agencyID, int? addressID)
         {
-            String SQL = String.Format("EXEC dbo.uspGetAddressList {0}, {1}", agencyID, addressID);
+            string SQL = String.Format("EXEC dbo.uspGetAddressList {0}, {1}", agencyID, addressID);
 
             return new DataRepository<Address>().GetList(SQL);
         }
