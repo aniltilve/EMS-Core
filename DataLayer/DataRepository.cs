@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,9 +9,16 @@ namespace EMS.DataAccess
     public class DataRepository<T> : IDataRepository<T> 
         where T : class
     {
-        public int Add(string SQL)
+        //Calls uspSave stored procedure for type T in EMS database to add new entry
+        public int Add(SqlCommand command)
         {
-            throw new NotImplementedException();
+            command.Connection = new SqlConnection("server=DESKTOP-PE3EO5G; database=ems; Integrated Security=false; user=emsuser1; pwd=emsuser1; MultipleActiveResultSets=true");
+            command.Connection.Open();
+            command.ExecuteNonQuery();
+            command.Connection.Close();
+
+            string id = String.Format("@i{0}ID", typeof(T).Name);
+            return Convert.ToInt32(command.Parameters[id].Value);
         }
 
         public void Delete(string SQL)
@@ -18,6 +26,7 @@ namespace EMS.DataAccess
 
         }
 
+        //Calls uspGetList stored procedure for type T in EMS database
         public IList<T> GetList(string SQL)
         {
             using (var context = new EMSContext<T>())

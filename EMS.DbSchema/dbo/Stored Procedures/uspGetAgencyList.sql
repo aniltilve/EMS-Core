@@ -27,7 +27,7 @@ BEGIN
             [szUpdatedBy],
             [szNotificationEmail],
             [bNotificationRequired],
-            [bAgreement],
+            [bAgreement ],
             [dtAgreementAccepted],
             [iAgreementAcceptedUserID],
             [szIPAddress],

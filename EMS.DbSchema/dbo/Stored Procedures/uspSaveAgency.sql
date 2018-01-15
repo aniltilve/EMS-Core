@@ -1,6 +1,4 @@
-﻿
-
-CREATE PROCEDURE [dbo].[uspSaveAgency]
+﻿CREATE PROCEDURE [dbo].[uspSaveAgency]
 (
 	@iAgencyID INT = NULL OUTPUT,
 	@szName VARCHAR(128),
@@ -13,7 +11,6 @@ CREATE PROCEDURE [dbo].[uspSaveAgency]
 	@bTaxExempt BIT,
 	@mLicensePrice MONEY,
 	@mRenewalPrice MONEY,
-	@bIsActive BIT,
 	@szInsertedBy VARCHAR(64),
 	@szUpdatedBy VARCHAR(128) = NULL,
 	@szNotificationEmail VARCHAR(64) = NULL,
@@ -93,7 +90,6 @@ BEGIN
 				bTaxExempt = @bTaxExempt,
 				mLicensePrice = @mLicensePrice,
 				mRenewalPrice = @mRenewalPrice,
-				bIsActive = @bIsActive,
 				dtUpdated = getdate(),
 				szUpdatedBy = @szUpdatedBy,
 				szNotificationEmail = @szNotificationEmail,

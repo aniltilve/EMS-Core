@@ -1,5 +1,6 @@
 ﻿using EMS.DataAccess;
 using EMS.Entity;
+using EMS.Business;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -8,25 +9,56 @@ namespace Test
 {
     public class Program
     {
-        static void Main(string[] args)
+        void TestGet<T>() where T: class
         {
-            DataRepository<Agency> repository = new DataRepository<Agency>();
+            DataRepository<T> repository = new DataRepository<T>();
+            string SQL = String.Format("EXEC dbo.uspGet{0}List", typeof(T).Name);
 
-            IList<Agency> list = repository.GetList("EXEC dbo.uspGetAgencyList");
+            IList<T> list = repository.GetList(SQL);
             foreach (var item in list)
             {
-                IList<PropertyInfo> properties = new List<PropertyInfo>(item.GetType().GetProperties());
+                IList<PropertyInfo> propertyInfo = new List<PropertyInfo>(item.GetType().GetProperties());
 
-               foreach (PropertyInfo property in properties)
+                foreach (PropertyInfo property in propertyInfo)
                 {
-                    var obj = property.GetValue(item, null);
+                    var propertyValue = property.GetValue(item, null);
 
                     Console.Write(property.Name + ": ");
-                    Console.WriteLine((obj !=null) ? obj.ToString(): string.Empty);
+                    Console.WriteLine((propertyValue != null) ? propertyValue.ToString() : string.Empty);
                 }
 
                 Console.WriteLine("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
             }
+        }
+
+        static void Main(string[] args)
+        {
+
+            EMS.Entity.Agency agency = new EMS.Entity.Agency();
+            agency.szName = "Anil Agency";
+            agency.szShortName = "Anil";
+            agency.szEIN = "1234";
+            agency.szRegState = "y";
+            agency.szStatus = "t";
+            agency.dtSubscribeStart = DateTime.Now;
+            agency.dtSubscribeEnd = null;
+            agency.bTaxExempt = true;
+            agency.mLicensePrice = 300m;
+            agency.mRenewalPrice = 400m;
+            agency.szInsertedBy = "Anil";
+            agency.szUpdatedBy = "";
+            agency.szNotificationEmail = "tilve";
+            agency.bNotificationRequired = false;
+            agency.bAgreement = true;
+            agency.dtAgreementAccepted = null;
+            agency.iAgreementAcceptedUserID = 1;
+            agency.szIPAddress = "192.0.02";
+            agency.szLogoFileName = "test";
+
+            EMS.Business.Agency bisAgency = new EMS.Business.Agency();
+
+            Console.WriteLine(bisAgency.AddAgency(agency));
+
             Console.ReadKey();
         }
     }
