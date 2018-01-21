@@ -21,7 +21,7 @@ namespace Test
 
                 foreach (PropertyInfo property in propertyInfo)
                 {
-                    var propertyValue = property.GetValue(item, null);
+                    var propertyValue = property.GetValue(item);
 
                     Console.Write(property.Name + ": ");
                     Console.WriteLine((propertyValue != null) ? propertyValue.ToString() : string.Empty);
