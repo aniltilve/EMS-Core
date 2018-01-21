@@ -25,13 +25,10 @@ namespace EMS.Business
                         && property.Name != "dtUpdated").
                     ToArray();
 
-                foreach (PropertyInfo property in propertyInfo)
-                {
-                    SqlParameter parameter = new SqlParameter(String.Format("@{0}", property.Name), 
-                        (property.GetValue(agency) ?? DBNull.Value));
-
-                    command.Parameters.Add(parameter);
-                }
+                propertyInfo.ToList().
+                    ForEach(property => command.Parameters.
+                        Add(new SqlParameter(String.Format("@{0}", property.Name),
+                            (property.GetValue(agency) ?? DBNull.Value))));
 
                 command.Parameters["@iAgencyID"].Direction = System.Data.ParameterDirection.Output;
 
