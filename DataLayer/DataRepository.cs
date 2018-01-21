@@ -10,7 +10,8 @@ namespace EMS.DataAccess
         where T : class
     {
         private string connectionString = "server=DESKTOP-PE3EO5G; database=ems; Integrated Security=false; user=emsuser1; pwd=emsuser1; MultipleActiveResultSets=true";
-        //Calls uspSave stored procedure for type T in EMS database to add new entry
+
+        //Calls uspSave stored procedure for type T in the EMS database to add a new entry
         public int Add(SqlCommand command)
         {
             command.Connection = new SqlConnection(connectionString);
@@ -27,7 +28,7 @@ namespace EMS.DataAccess
             throw new NotImplementedException();
         }
 
-        //Calls uspGetList stored procedure for type T in EMS database
+        //Calls uspGetList stored procedure for type T in the EMS database
         public IList<T> GetList(string SQL)
         {
             using (var context = new EMSContext<T>())
@@ -38,6 +39,7 @@ namespace EMS.DataAccess
             }
         }
 
+        //Calls uspSave stored procedure for type T in the EMS database to update an existing entry
         public void Update(SqlCommand command)
         {
             command.Connection = new SqlConnection(connectionString);
