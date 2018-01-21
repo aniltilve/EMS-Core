@@ -8,7 +8,7 @@ namespace EMS.DataAccess
     {
         IList<T> GetList(string SQL);
         int Add(SqlCommand command);
-        void Update(string SQL);
+        void Update(SqlCommand command);
         void Delete(string SQL);
     }
 }

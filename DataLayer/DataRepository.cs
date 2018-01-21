@@ -9,10 +9,11 @@ namespace EMS.DataAccess
     public class DataRepository<T> : IDataRepository<T> 
         where T : class
     {
+        private string connectionString = "server=DESKTOP-PE3EO5G; database=ems; Integrated Security=false; user=emsuser1; pwd=emsuser1; MultipleActiveResultSets=true";
         //Calls uspSave stored procedure for type T in EMS database to add new entry
         public int Add(SqlCommand command)
         {
-            command.Connection = new SqlConnection("server=DESKTOP-PE3EO5G; database=ems; Integrated Security=false; user=emsuser1; pwd=emsuser1; MultipleActiveResultSets=true");
+            command.Connection = new SqlConnection(connectionString);
             command.Connection.Open();
             command.ExecuteNonQuery();
             command.Connection.Close();
@@ -23,7 +24,7 @@ namespace EMS.DataAccess
 
         public void Delete(string SQL)
         {
-
+            throw new NotImplementedException();
         }
 
         //Calls uspGetList stored procedure for type T in EMS database
@@ -37,9 +38,12 @@ namespace EMS.DataAccess
             }
         }
 
-        public void Update(string SQL)
+        public void Update(SqlCommand command)
         {
-            throw new NotImplementedException();
+            command.Connection = new SqlConnection(connectionString);
+            command.Connection.Open();
+            command.ExecuteNonQuery();
+            command.Connection.Close();
         }
     }
 }
