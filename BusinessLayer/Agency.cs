@@ -40,8 +40,6 @@ namespace EMS.Business
 
         public int UpdateAgency(Entity.Agency agency)
         {
-            int agencyID = 0;
-
             using (SqlCommand command = new SqlCommand("dbo.uspSaveAgency"))
             {
                 command.CommandType = System.Data.CommandType.StoredProcedure;
@@ -63,7 +61,7 @@ namespace EMS.Business
                 new DataRepository<Agency>().Update(command);
             }
 
-            return agencyID;
+            return agency.iAgencyID;
         }
 
         public IList<Agency> GetAgencyList(int? agencyID)
