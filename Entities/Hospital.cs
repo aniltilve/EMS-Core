@@ -13,7 +13,7 @@ namespace EMS.Entity
 
         public int iAgencyID { get; set; }
 
-        [Required(ErrorMessage = "Please enter a name")]
+        [Required(ErrorMessage = "Please enter a name.")]
         [Display(Name = "Name:")]
         [MaxLength(100, ErrorMessage = "This field has a max length of 100 characters.")]
         public string szName { get; set; }
