@@ -21,6 +21,7 @@ namespace EMS.Entity
 
         [Required(ErrorMessage = "Please enter a name")]
         [Display(Name = "Name:")]
+        [MaxLength(32, ErrorMessage = ("This field has a max length of 32 characters."))]
         public string szName { get; set; }
 
         public bool bIsActive { get; set; }

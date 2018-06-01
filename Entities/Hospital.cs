@@ -12,9 +12,10 @@ namespace EMS.Entity
         public int iHospitalID { get; set; }
 
         public int iAgencyID { get; set; }
-        [Required(ErrorMessage = "Please enter name")]
-        [Display(Name = "Name:")]
 
+        [Required(ErrorMessage = "Please enter a name")]
+        [Display(Name = "Name:")]
+        [MaxLength(100, ErrorMessage = "This field has a max length of 100 characters.")]
         public string szName { get; set; }
 
         public bool bIsActive { get; set; }
