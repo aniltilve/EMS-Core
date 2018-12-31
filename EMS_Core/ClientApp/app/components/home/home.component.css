@@ -1,18 +1,15 @@
-﻿.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-}
-
-.page-header {
+﻿.page-header {
     font-size: 40px;
 }
 
 .product-description {
     font-size: 32px;
     text-align: center;
+}
+
+.validation-error {
+    margin-top: 5px;
+    color: red;
 }
 
 @media (max-width: 767px) {

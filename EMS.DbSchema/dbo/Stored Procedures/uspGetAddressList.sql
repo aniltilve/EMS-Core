@@ -1,7 +1,4 @@
-﻿
-
-
-CREATE PROCEDURE [dbo].[uspGetAddressList]
+﻿CREATE PROCEDURE [dbo].[uspGetAddressList]
 (
 	@iAgencyID INT,
 	@iAddressID INT = NULL
@@ -16,7 +13,7 @@ BEGIN
 			[szAddress2], 
 			[szCity], 
 			[szState], 
-			[szPostalCode], 
+			[szPostalCode], h
 			[bIsActive], 
 			[dtInserted], 
 			[szInsertedBy], 

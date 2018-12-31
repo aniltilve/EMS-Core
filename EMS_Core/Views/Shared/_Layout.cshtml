@@ -1,16 +1,19 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EMS_Core</title>
     <base href="~/" />
-
     <link rel="stylesheet" href="~/dist/vendor.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Styles/Layout.css" />
 </head>
 <body>
     @RenderBody()
 
     @RenderSection("scripts", required: false)
+    <div class="footer">
+        <div>EMS-DCRT is for use only by authorized individuals. Any use other than that stated in the license agreement is illegal.Violators will be prosecuted to the full extent of the law.</div>
+    </div>
 </body>
 </html>

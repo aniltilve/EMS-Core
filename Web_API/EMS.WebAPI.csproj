@@ -19,11 +19,5 @@
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\EMS.Business.csproj" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <Reference Include="BusinessLayer">
-      <HintPath>..\BusinessLayer\bin\Debug\netcoreapp2.0\BusinessLayer.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 
 </Project>

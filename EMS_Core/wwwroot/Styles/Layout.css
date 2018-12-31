@@ -1,0 +1,35 @@
+﻿html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+
+body {
+    position: relative;
+    display: block;
+    min-height: 100%;
+}
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-width: 100%;
+    padding: 1rem;
+    text-align: center;
+    background-color:lightgray;
+}
+
+@media (max-height: 785px) {
+    .footer {
+        position: relative;
+        padding-top: 100px;
+    }
+}
