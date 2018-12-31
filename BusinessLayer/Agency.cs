@@ -32,7 +32,7 @@ namespace EMS.Business
 
                 command.Parameters["@iAgencyID"].Direction = System.Data.ParameterDirection.Output;
 
-                agencyID = new DataRepository<Agency>().Add(command);
+                agencyID = new EMSRepository<Agency>().Add(command);
             }
 
             return agencyID;
@@ -60,7 +60,7 @@ namespace EMS.Business
 
                 command.Parameters["@iAgencyID"].Direction = System.Data.ParameterDirection.Output;
 
-                new DataRepository<Agency>().Update(command);
+                new EMSRepository<Agency>().Update(command);
             }
 
             return agencyID;
@@ -70,7 +70,7 @@ namespace EMS.Business
         {
             string SQL = String.Format("EXEC dbo.uspGetAgencyList {0}", agencyID);
 
-            return new DataRepository<Agency>().GetList(SQL);
+            return new EMSRepository<Agency>().GetList(SQL);
         }
     }
 }

@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace EMS.DataAccess
 {
-    public class DataRepository<T> : IDataRepository<T> 
-        where T : class
+    public class EMSRepository<TEntity> : IDataRepository<TEntity> 
+        where TEntity : class
     {
-        private string connectionString = "server=DESKTOP-PE3EO5G; database=ems; Integrated Security=false; user=emsuser1; pwd=emsuser1; MultipleActiveResultSets=true";
+        //private readonly string connectionString = "server=DESKTOP-PE3EO5G; database=ems; Integrated Security=false; user=emsuser1; pwd=emsuser1; MultipleActiveResultSets=true";
+        string connec = ConfigurationExtensions.Get
+
 
         //Calls uspSave stored procedure for type T in the EMS database to add a new entry
         public int Add(SqlCommand command)
@@ -19,7 +22,7 @@ namespace EMS.DataAccess
             command.ExecuteNonQuery();
             command.Connection.Close();
 
-            string id = String.Format("@i{0}ID", typeof(T).Name);
+            string id = String.Format("@i{0}ID", typeof(TEntity).Name);
             return Convert.ToInt32(command.Parameters[id].Value);
         }
 
@@ -29,13 +32,13 @@ namespace EMS.DataAccess
         }
 
         //Calls uspGetList stored procedure for type T in the EMS database
-        public IList<T> GetList(string SQL)
+        public IList<TEntity> GetList(string SQL)
         {
-            using (var context = new EMSContext<T>())
+            using (var context = new EMSContext())
             {
-                return context.DbSet
-                    .FromSql<T>(SQL)
-                    .ToList<T>();
+                return context.Set<TEntity>()
+                    .FromSql<TEntity>(SQL)
+                    .ToList<TEntity>();
             }
         }
 

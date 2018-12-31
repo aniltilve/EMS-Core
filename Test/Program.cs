@@ -11,7 +11,7 @@ namespace Test
     {
         void TestGet<T>() where T: class
         {
-            DataRepository<T> repository = new DataRepository<T>();
+            EMSRepository<T> repository = new EMSRepository<T>();
             string SQL = String.Format("EXEC dbo.uspGet{0}List", typeof(T).Name);
 
             IList<T> list = repository.GetList(SQL);

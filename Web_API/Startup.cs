@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using EMS.DataAccess;
 
 namespace EMS.WebAPI
 {
@@ -26,6 +27,7 @@ namespace EMS.WebAPI
         {
             services.AddMvc();
             services.AddSingleton<IAppConfiguration, AppConfiguration>();
+            services.AddDbContext<EMSContext>();
         }
         
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,7 +35,6 @@ namespace EMS.WebAPI
         {
             if (env.IsDevelopment())
             {
-
                 app.UseDeveloperExceptionPage();
             }
 

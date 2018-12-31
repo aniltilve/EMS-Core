@@ -11,7 +11,7 @@ namespace EMS.Business
         {
             string SQL = String.Format("EXEC dbo.uspGetCrewList {0}, {1}", agencyID, townID);
 
-            return new DataRepository<Town>().GetList(SQL);
+            return new EMSRepository<Town>().GetList(SQL);
         }
     }
 }
