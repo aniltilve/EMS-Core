@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace EMS.DataAccess
 {
     public class EMSRepository<TEntity> : IDataRepository<TEntity> 
         where TEntity : class
     {
-        //private readonly string connectionString = "server=DESKTOP-PE3EO5G; database=ems; Integrated Security=false; user=emsuser1; pwd=emsuser1; MultipleActiveResultSets=true";
-        string connec = ConfigurationExtensions.Get
+        public static readonly string connectionString = "";
 
 
         //Calls uspSave stored procedure for type T in the EMS database to add a new entry

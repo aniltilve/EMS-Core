@@ -7,8 +7,7 @@ namespace EMS.DataAccess
 {
     public class EMSContext : DbContext
     {
-        bool isDisposed;
-        
+        public static string connectionString { get; set; }
 
         public EMSContext()
         {

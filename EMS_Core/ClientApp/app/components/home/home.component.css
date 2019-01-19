@@ -1,6 +1,4 @@
-﻿.page-header {
-    font-size: 40px;
-}
+﻿
 
 .product-description {
     font-size: 32px;
@@ -13,9 +11,6 @@
 }
 
 @media (max-width: 767px) {
-    .page-header {
-        font-size: 28px;
-    }
     .product-description {
         font-size: 16px;
     }

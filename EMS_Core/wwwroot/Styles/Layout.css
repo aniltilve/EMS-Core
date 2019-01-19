@@ -9,11 +9,18 @@
     box-sizing: inherit;
 }
 
+.page-header {
+    font-size: 40px;
+    background-color: white !important;
+    margin: 0;
+    padding: 20px 0px;
+}
 
 body {
     position: relative;
     display: block;
     min-height: 100%;
+    background-color: lightgray !important;
 }
 
 .footer {
@@ -31,5 +38,8 @@ body {
     .footer {
         position: relative;
         padding-top: 100px;
+    }
+    .page-header {
+        font-size: 28px;
     }
 }

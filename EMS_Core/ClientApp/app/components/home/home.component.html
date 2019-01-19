@@ -14,9 +14,7 @@
     <li><strong>Hot module replacement</strong>. In development mode, you don't even need to reload the page after making most changes. Within seconds of saving changes to files, your Angular app will be rebuilt and a new instance injected into the page.</li>
     <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and the <code>webpack</code> build tool produces minified static CSS and JavaScript files.</li>
 </ul> -->
-<div class="page-header" style="text-align:center">
-    <b>EMS Data Capture & Reporting Tool</b>
-</div>
+
 <div class="product-description">
     <b><a href="/Content/PDFs/EMS-DCRT%20Product%20Description.pdf" target="_blank">Not an Existing User?</a></b>
 </div>
@@ -31,24 +29,24 @@
     <div class="row">
         <div class="col-xs-2 col-sm-3 col-md-4 col-lg-4"></div>
         <div class="col-xs-8 col-sm-6 col-md-4 col-lg-4">
-            <form action="">
+            <form id="login">
                 <div class="form-group">
                     <label for="agency">Agency:</label>
-                    <input type="text" class="form-control input-sm" id="agency" required (click)="reset($event)">
-                    <div class="validation-error" [hidden]="agencyExists"><b>Error: </b>This agency is not in the system. Please enter another agency.</div>
+                    <input type="text" class="form-control input-sm" [(ngModel)]="agency" required (click)="reset($event)">
+                    <div class="validation-error" [style.display]="hideAgencyError ? 'none' : 'inline'"><b>Error: </b>This agency is not in the system. Please enter another agency.</div>
                 </div>
                 <div class="form-group">
                     <label for="email">Username:</label>
-                    <input type="text" class="form-control input-sm" id="username" required>
+                    <input type="text" class="form-control input-sm" [(ngModel)]="username" required (click)="reset($event)">
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" class="form-control input-sm" id="password" required>
+                    <input type="password" class="form-control input-sm" [(ngModel)]="password" required (click)="reset($event)">
                 </div>
                 <div class="checkbox">
                     <label><input type="checkbox">Remember me</label>
                 </div>
-                <button type="submit" class="btn btn-secondary" (click)="validate()"><b>Log in</b></button>
+                <button type="submit" class="btn btn-secondary" (click)="validate(login.value)"><b>Log in</b></button>
                 <button type="reset" class="btn btn-secondary"><b>Clear</b></button>
             </form>
         </div>

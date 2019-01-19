@@ -9,11 +9,17 @@
     <link rel="stylesheet" href="~/Styles/Layout.css" />
 </head>
 <body>
+    <div class="page-header" style="text-align:center">
+        <b>EMS Data Capture & Reporting Tool</b>
+    </div>
     @RenderBody()
 
     @RenderSection("scripts", required: false)
     <div class="footer">
-        <div>EMS-DCRT is for use only by authorized individuals. Any use other than that stated in the license agreement is illegal.Violators will be prosecuted to the full extent of the law.</div>
+        <div>
+            <span><b>Important Notice: </b></span>
+            <span>EMS-DCRT is for use only by authorized individuals. Any use other than that stated in the license agreement is illegal.Violators will be prosecuted to the full extent of the law.</span>
+        </div>
     </div>
 </body>
 </html>

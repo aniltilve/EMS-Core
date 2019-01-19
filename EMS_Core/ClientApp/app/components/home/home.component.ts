@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { Http } from '@angular/http';
+import { getBaseUrl } from '../../app.browser.module';
 
 @Component({
     selector: 'home',
@@ -6,22 +9,24 @@ import { Component } from '@angular/core';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-    public agencyExists: boolean;
+    public hideAgencyError: boolean;
     public userExists: boolean;
 
-    constructor() {
-        this.agencyExists = true;
+    constructor(private http: Http) {
+        this.hideAgencyError = true;
         this.userExists = true;
     }
 
-    validate() {
-        //this.agencyExists = false;
+    validate(value: string) {
+        this.hideAgencyError = false;
+        var url = window.location.origin;
+        this.http.post('api/login', null);
     }
 
     reset(event: any) {
         switch (event.target.id) {
             case "agency": {
-                this.agencyExists = true;
+                this.hideAgencyError = true;
                 break;
             }
         }
