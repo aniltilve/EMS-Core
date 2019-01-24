@@ -2,25 +2,28 @@ import { Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Http } from '@angular/http';
 import { getBaseUrl } from '../../app.browser.module';
+import { Login } from '../../models/login';
 
 @Component({
-    selector: 'home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+    selector: 'login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
-export class HomeComponent {
+export class LoginComponent {
     public hideAgencyError: boolean;
     public userExists: boolean;
+    model: any = {};
 
     constructor(private http: Http) {
         this.hideAgencyError = true;
         this.userExists = true;
     }
 
-    validate(value: string) {
-        this.hideAgencyError = false;
-        var url = window.location.origin;
-        this.http.post('api/login', null);
+    onSubmit() {
+        var url = window.location.origin + '/api/login';
+        var login: Login = { agency: this.model.agency, username: this.model.username, password: this.model.password };
+        var res = this.http.post(url, login);
+        console.log(res);
     }
 
     reset(event: any) {

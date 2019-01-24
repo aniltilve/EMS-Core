@@ -124,5 +124,6 @@
     <Build Include="Security\emsuser_1.sql" />
     <Build Include="Security\sbressler_1.sql" />
     <Build Include="Security\Permissions.sql" />
+    <Build Include="dbo\Stored Procedures\uspValidate.sql" />
   </ItemGroup>
 </Project>

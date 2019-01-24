@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using EMS.Entity;
 
 namespace EMS.Service.Controllers
 {
@@ -26,8 +27,8 @@ namespace EMS.Service.Controllers
         //}
 
         // POST api/values
-        [HttpPost("{UserID}")]
-        public void Post(string agency, string username, string password)
+        [HttpPost("{Login}")]
+        public void Post(Login login)
         {
         }
 

@@ -29,24 +29,24 @@
     <div class="row">
         <div class="col-xs-2 col-sm-3 col-md-4 col-lg-4"></div>
         <div class="col-xs-8 col-sm-6 col-md-4 col-lg-4">
-            <form id="login">
+            <form id="login" #f="ngForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="agency">Agency:</label>
-                    <input type="text" class="form-control input-sm" [(ngModel)]="agency" required (click)="reset($event)">
+                    <input type="text" class="form-control input-sm" [(ngModel)]="model.agency" name="agency" required (click)="reset($event)">
                     <div class="validation-error" [style.display]="hideAgencyError ? 'none' : 'inline'"><b>Error: </b>This agency is not in the system. Please enter another agency.</div>
                 </div>
                 <div class="form-group">
                     <label for="email">Username:</label>
-                    <input type="text" class="form-control input-sm" [(ngModel)]="username" required (click)="reset($event)">
+                    <input type="text" class="form-control input-sm" [(ngModel)]="model.username" name="username" required (click)="reset($event)">
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" class="form-control input-sm" [(ngModel)]="password" required (click)="reset($event)">
+                    <input type="password" class="form-control input-sm" [(ngModel)]="model.password" name="password" required (click)="reset($event)">
                 </div>
                 <div class="checkbox">
                     <label><input type="checkbox">Remember me</label>
                 </div>
-                <button type="submit" class="btn btn-secondary" (click)="validate(login.value)"><b>Log in</b></button>
+                <button type="submit" class="btn btn-secondary"><b>Log in</b></button>
                 <button type="reset" class="btn btn-secondary"><b>Clear</b></button>
             </form>
         </div>

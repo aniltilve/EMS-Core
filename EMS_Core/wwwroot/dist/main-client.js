@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b2223bfc93e36a9ef722"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1014a85d091c9c8f8322"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -1589,7 +1589,7 @@ function getBaseUrl() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_app_app_component__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_navmenu_navmenu_component__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_home_home_component__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_login_login_component__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_fetchdata_fetchdata_component__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_counter_counter_component__ = __webpack_require__(13);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1618,15 +1618,15 @@ var AppModuleShared = (function () {
                 __WEBPACK_IMPORTED_MODULE_6__components_navmenu_navmenu_component__["a" /* NavMenuComponent */],
                 __WEBPACK_IMPORTED_MODULE_9__components_counter_counter_component__["a" /* CounterComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__components_fetchdata_fetchdata_component__["a" /* FetchDataComponent */],
-                __WEBPACK_IMPORTED_MODULE_7__components_home_home_component__["a" /* HomeComponent */]
+                __WEBPACK_IMPORTED_MODULE_7__components_login_login_component__["a" /* LoginComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["HttpModule"],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
                 __WEBPACK_IMPORTED_MODULE_4__angular_router__["RouterModule"].forRoot([
-                    { path: '', redirectTo: 'home', pathMatch: 'full' },
-                    { path: 'home', component: __WEBPACK_IMPORTED_MODULE_7__components_home_home_component__["a" /* HomeComponent */] },
+                    { path: '', redirectTo: 'login', pathMatch: 'full' },
+                    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_7__components_login_login_component__["a" /* LoginComponent */] },
                     { path: 'counter', component: __WEBPACK_IMPORTED_MODULE_9__components_counter_counter_component__["a" /* CounterComponent */] },
                     { path: 'fetch-data', component: __WEBPACK_IMPORTED_MODULE_8__components_fetchdata_fetchdata_component__["a" /* FetchDataComponent */] },
                     { path: '**', redirectTo: 'home' }
@@ -1718,7 +1718,7 @@ var FetchDataComponent = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1732,18 +1732,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var HomeComponent = (function () {
-    function HomeComponent(http) {
+var LoginComponent = (function () {
+    function LoginComponent(http) {
         this.http = http;
+        this.model = {};
         this.hideAgencyError = true;
         this.userExists = true;
     }
-    HomeComponent.prototype.validate = function (value) {
-        this.hideAgencyError = false;
-        var url = window.location.origin;
-        this.http.post('api/login', null);
+    LoginComponent.prototype.onSubmit = function () {
+        var url = window.location.origin + '/api/login';
+        var login = { agency: this.model.agency, username: this.model.username, password: this.model.password };
+        var res = this.http.post(url, login);
+        console.log(res);
     };
-    HomeComponent.prototype.reset = function (event) {
+    LoginComponent.prototype.reset = function (event) {
         switch (event.target.id) {
             case "agency": {
                 this.hideAgencyError = true;
@@ -1751,15 +1753,15 @@ var HomeComponent = (function () {
             }
         }
     };
-    HomeComponent = __decorate([
+    LoginComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'home',
+            selector: 'login',
             template: __webpack_require__(26),
             styles: [__webpack_require__(34)]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])
-    ], HomeComponent);
-    return HomeComponent;
+    ], LoginComponent);
+    return LoginComponent;
 }());
 
 
@@ -2183,7 +2185,7 @@ module.exports = "<h1>Weather forecast</h1>\r\n\r\n<p>This component demonstrate
 /* 26 */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<h1>Hello, world!</h1>\r\n<p>Welcome to your new single-page application, built with:</p>\r\n<ul>\r\n    <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>\r\n    <li><a href='https://angular.io/'>Angular</a> and <a href='http://www.typescriptlang.org/'>TypeScript</a> for client-side code</li>\r\n    <li><a href='https://webpack.github.io/'>Webpack</a> for building and bundling client-side resources</li>\r\n    <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>\r\n</ul>\r\n<p>To help you get started, we've also set up:</p>\r\n<ul>\r\n    <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return here.</li>\r\n    <li><strong>Server-side prerendering</strong>. For faster initial loading and improved SEO, your Angular app is prerendered on the server. The resulting HTML is then transferred to the browser where a client-side copy of the app takes over.</li>\r\n    <li><strong>Webpack dev middleware</strong>. In development mode, there's no need to run the <code>webpack</code> build tool. Your client-side resources are dynamically built on demand. Updates are available as soon as you modify any file.</li>\r\n    <li><strong>Hot module replacement</strong>. In development mode, you don't even need to reload the page after making most changes. Within seconds of saving changes to files, your Angular app will be rebuilt and a new instance injected into the page.</li>\r\n    <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and the <code>webpack</code> build tool produces minified static CSS and JavaScript files.</li>\r\n</ul> -->\r\n\r\n<div class=\"product-description\">\r\n    <b><a href=\"/Content/PDFs/EMS-DCRT%20Product%20Description.pdf\" target=\"_blank\">Not an Existing User?</a></b>\r\n</div>\r\n<div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-3 col-sm-3 col-md-4 col-lg-5\"></div>\r\n        <div class=\"col-xs-6 col-sm-6 col-md-4 col-lg-2\">\r\n            <img class=\"img-responsive\" src=\"/Content/Images/EMS%20DCRT%20Logo.png\" />\r\n        </div>\r\n        <div class=\"col-xs-3 col-sm-3 col-md-4 col-lg-5\"></div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-2 col-sm-3 col-md-4 col-lg-4\"></div>\r\n        <div class=\"col-xs-8 col-sm-6 col-md-4 col-lg-4\">\r\n            <form id=\"login\">\r\n                <div class=\"form-group\">\r\n                    <label for=\"agency\">Agency:</label>\r\n                    <input type=\"text\" class=\"form-control input-sm\" [(ngModel)]=\"agency\" required (click)=\"reset($event)\">\r\n                    <div class=\"validation-error\" [style.display]=\"hideAgencyError ? 'none' : 'inline'\"><b>Error: </b>This agency is not in the system. Please enter another agency.</div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"email\">Username:</label>\r\n                    <input type=\"text\" class=\"form-control input-sm\" [(ngModel)]=\"username\" required (click)=\"reset($event)\">\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"password\">Password:</label>\r\n                    <input type=\"password\" class=\"form-control input-sm\" [(ngModel)]=\"password\" required (click)=\"reset($event)\">\r\n                </div>\r\n                <div class=\"checkbox\">\r\n                    <label><input type=\"checkbox\">Remember me</label>\r\n                </div>\r\n                <button type=\"submit\" class=\"btn btn-secondary\" (click)=\"validate(login.value)\"><b>Log in</b></button>\r\n                <button type=\"reset\" class=\"btn btn-secondary\"><b>Clear</b></button>\r\n            </form>\r\n        </div>\r\n        <div class=\"col-xs-2 col-sm-3 col-md-4 col-lg-4\"></div>\r\n    </div>\r\n</div>\r\n";
+module.exports = "<!--<h1>Hello, world!</h1>\r\n<p>Welcome to your new single-page application, built with:</p>\r\n<ul>\r\n    <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>\r\n    <li><a href='https://angular.io/'>Angular</a> and <a href='http://www.typescriptlang.org/'>TypeScript</a> for client-side code</li>\r\n    <li><a href='https://webpack.github.io/'>Webpack</a> for building and bundling client-side resources</li>\r\n    <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>\r\n</ul>\r\n<p>To help you get started, we've also set up:</p>\r\n<ul>\r\n    <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return here.</li>\r\n    <li><strong>Server-side prerendering</strong>. For faster initial loading and improved SEO, your Angular app is prerendered on the server. The resulting HTML is then transferred to the browser where a client-side copy of the app takes over.</li>\r\n    <li><strong>Webpack dev middleware</strong>. In development mode, there's no need to run the <code>webpack</code> build tool. Your client-side resources are dynamically built on demand. Updates are available as soon as you modify any file.</li>\r\n    <li><strong>Hot module replacement</strong>. In development mode, you don't even need to reload the page after making most changes. Within seconds of saving changes to files, your Angular app will be rebuilt and a new instance injected into the page.</li>\r\n    <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and the <code>webpack</code> build tool produces minified static CSS and JavaScript files.</li>\r\n</ul> -->\r\n\r\n<div class=\"product-description\">\r\n    <b><a href=\"/Content/PDFs/EMS-DCRT%20Product%20Description.pdf\" target=\"_blank\">Not an Existing User?</a></b>\r\n</div>\r\n<div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-3 col-sm-3 col-md-4 col-lg-5\"></div>\r\n        <div class=\"col-xs-6 col-sm-6 col-md-4 col-lg-2\">\r\n            <img class=\"img-responsive\" src=\"/Content/Images/EMS%20DCRT%20Logo.png\" />\r\n        </div>\r\n        <div class=\"col-xs-3 col-sm-3 col-md-4 col-lg-5\"></div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-2 col-sm-3 col-md-4 col-lg-4\"></div>\r\n        <div class=\"col-xs-8 col-sm-6 col-md-4 col-lg-4\">\r\n            <form id=\"login\" #f=\"ngForm\" (ngSubmit)=\"onSubmit()\">\r\n                <div class=\"form-group\">\r\n                    <label for=\"agency\">Agency:</label>\r\n                    <input type=\"text\" class=\"form-control input-sm\" [(ngModel)]=\"model.agency\" name=\"agency\" required (click)=\"reset($event)\">\r\n                    <div class=\"validation-error\" [style.display]=\"hideAgencyError ? 'none' : 'inline'\"><b>Error: </b>This agency is not in the system. Please enter another agency.</div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"email\">Username:</label>\r\n                    <input type=\"text\" class=\"form-control input-sm\" [(ngModel)]=\"model.username\" name=\"username\" required (click)=\"reset($event)\">\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"password\">Password:</label>\r\n                    <input type=\"password\" class=\"form-control input-sm\" [(ngModel)]=\"model.password\" name=\"password\" required (click)=\"reset($event)\">\r\n                </div>\r\n                <div class=\"checkbox\">\r\n                    <label><input type=\"checkbox\">Remember me</label>\r\n                </div>\r\n                <button type=\"submit\" class=\"btn btn-secondary\"><b>Log in</b></button>\r\n                <button type=\"reset\" class=\"btn btn-secondary\"><b>Clear</b></button>\r\n            </form>\r\n        </div>\r\n        <div class=\"col-xs-2 col-sm-3 col-md-4 col-lg-4\"></div>\r\n    </div>\r\n</div>\r\n";
 
 /***/ }),
 /* 27 */

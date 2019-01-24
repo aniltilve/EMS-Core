@@ -11,7 +11,6 @@ namespace EMS.Entity
         public int iAddressID { get; set; }
         public int iAgencyID { get; set; }
         public string szAddress1 { get; set; }
-
         public string szAddress2 { get; set; }
         public string szCity { get; set; }
         public string szState { get; set; }
